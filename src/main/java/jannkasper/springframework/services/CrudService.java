@@ -1,13 +1,14 @@
 package jannkasper.springframework.services;
 
-import java.util.Set;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public interface CrudService<T,ID> {
-    Set<T> findAll();
+    Flux<T> findAll();
 
-    T findById(ID id);
+    Mono<T> findById(ID id);
 
-    T save (T object);
+    Mono<T> save (T object);
 
-    void deleteById (ID id);
+    Mono<Void> deleteById (ID id);
 }

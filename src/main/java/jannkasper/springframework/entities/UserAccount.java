@@ -2,21 +2,32 @@ package jannkasper.springframework.entities;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
+import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.UUID;
 
 @Getter
 @Setter
-@Entity(name = "user_account")
+@Document(collection = "user_account")
 public class UserAccount {
 
+//    @Id
+//    @GeneratedValue(generator = "UUID")
+//    @GenericGenerator( name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+//    @Column(name = "id", updatable = false, nullable = false)
+//    private UUID id;
+
+
+    public UserAccount() {
+        this.id = UUID.randomUUID().toString();
+    }
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    private String id;
 
     @NotEmpty
     private String login;
@@ -27,35 +38,4 @@ public class UserAccount {
     @Email
     private String email;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }

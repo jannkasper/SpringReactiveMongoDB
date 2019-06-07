@@ -1,8 +1,9 @@
 package jannkasper.springframework.services;
 
 import jannkasper.springframework.entities.UserAccount;
+import reactor.core.publisher.Mono;
 
-public interface UserAccountService extends CrudService<UserAccount,Long> {
+public interface UserAccountService extends CrudService<UserAccount,String> {
 
-    UserAccount findUserAccountByLogin (String login);
+    Mono<UserAccount> findUserAccountByLogin (String login);
 }
