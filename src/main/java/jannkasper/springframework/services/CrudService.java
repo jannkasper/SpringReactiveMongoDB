@@ -1,10 +1,9 @@
 package jannkasper.springframework.services;
 
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface CrudService<T,ID> {
-    Flux<T> findAll();
+//    Flux<T> findAll();
 
     Mono<T> findById(ID id);
 
